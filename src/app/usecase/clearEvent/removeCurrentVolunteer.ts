@@ -5,7 +5,7 @@ export class RemoveCurrentVolunteer {
 
     constructor(private clearEventRepository : ClearEventRepository) {}
 
-    async execute(idEvent : string, current_volunteer : number) : Promise<ClearEvent> {
+    async execute(idEvent : string, current_volunteer : number) : Promise<void> {
 
         return await this.clearEventRepository.removeCurrentVolunteer(idEvent, current_volunteer)
     }

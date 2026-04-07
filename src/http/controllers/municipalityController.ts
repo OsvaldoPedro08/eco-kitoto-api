@@ -43,9 +43,9 @@ export class MunicipalityController {
 
         try {
             const municipality = await createMunicipality.execute({
-                idmunicipality,
-                name,
-                provinceId
+                idmunicipality : idmunicipality,
+                name : name,
+                provinceId : provinceId
             })
 
             return response.json(municipality)

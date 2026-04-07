@@ -1,18 +1,20 @@
 import { Router } from "express";
 import { DistrictController } from "../controllers/districtController";
+import { authenticatedMiddleware } from "../middlewares/authenticatedMiddleware";
+import { checkRoleMiddleware } from "../middlewares/checkRoleMiddleware";
 
 const districtRouter = Router()
 const districtController = new DistrictController()
 
 //listAll
-    districtRouter.get("/distrito", districtController.listAll)
+    districtRouter.get("/distrito", authenticatedMiddleware, districtController.listAll)
 //insert
-    districtRouter.post("/distrito/novo", districtController.create)
+    districtRouter.post("/distrito/novo", authenticatedMiddleware, checkRoleMiddleware(['Administrador','Administradora']), districtController.create)
 //update
-    districtRouter.patch("/distrito/editar/:id", districtController.update)
+    districtRouter.patch("/distrito/editar/:id", authenticatedMiddleware, checkRoleMiddleware(['Administrador','Administradora']), districtController.update)
 //delete
-    districtRouter.delete("/distrito/:id", districtController.delete)
+    districtRouter.delete("/distrito/:id", authenticatedMiddleware, checkRoleMiddleware(['Administrador','Administradora']), districtController.delete)
 //search by name of district
-    districtRouter.get("/distrito/:name", districtController.searchByName)
+    districtRouter.get("/distrito/:name", authenticatedMiddleware, districtController.searchByName)
 
 export { districtRouter }

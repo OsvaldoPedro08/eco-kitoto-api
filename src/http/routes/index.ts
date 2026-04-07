@@ -7,9 +7,13 @@ import { criticalAreaRouter } from "./criticalAreaRoute";
 import { clearEventRouter } from "./clearEventRoute";
 import { volunteerRouter } from "./volunteerParticipationRoute";
 import { relatoryRouter } from "./relatoryRoute";
+import { authRouter } from "./authRoute";
+import { materialRoutes } from "./materialRoute";
 
 const systemRouter = Router()
 
+//login route
+    systemRouter.use("/eco-kitoto", authRouter)
 // province route
     systemRouter.use("/eco-kitoto", provinceRouter)
 //municipality route
@@ -22,6 +26,8 @@ const systemRouter = Router()
     systemRouter.use("/eco-kitoto", criticalAreaRouter)
 //clear event route
     systemRouter.use("/eco-kitoto", clearEventRouter)
+//material route
+    systemRouter.use("/eco-kitoto", materialRoutes)
 //volunteer participation route
     systemRouter.use("/eco-kitoto", volunteerRouter)
 //relatory route

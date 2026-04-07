@@ -40,9 +40,9 @@ export class DistrictController {
 
         try {
             const district = await createDistrict.execute({
-                id_district,
-                name,
-                municipalityId
+                id_district : id_district,
+                name : name,
+                municipalityId : municipalityId
             })
 
             return response.json(district)

@@ -1,26 +1,28 @@
 import { Router } from "express";
 import { CriticalAreaController } from "../controllers/criticalAreaController";
+import { authenticatedMiddleware } from "../middlewares/authenticatedMiddleware";
+import { checkRoleMiddleware } from "../middlewares/checkRoleMiddleware";
 
 const criticalAreaRouter = Router()
 const criticalAreaController = new CriticalAreaController()
 
 //list all
-    criticalAreaRouter.get("/area-critica", criticalAreaController.listAll)
-//create route
-    criticalAreaRouter.post("/area-critica/nova", criticalAreaController.create)
+    criticalAreaRouter.get("/area-critica", authenticatedMiddleware, criticalAreaController.listAll)
+//create
+    criticalAreaRouter.post("/area-critica/nova", authenticatedMiddleware, criticalAreaController.create)
 //update
-    criticalAreaRouter.patch("/area-critica/editar/:id", criticalAreaController.update)
+    criticalAreaRouter.patch("/area-critica/editar/:id", authenticatedMiddleware, criticalAreaController.update)
 //delete
-    criticalAreaRouter.delete("/area-critica/:id", criticalAreaController.delete)
+    criticalAreaRouter.delete("/area-critica/:id", authenticatedMiddleware, checkRoleMiddleware(['Administrador','Administradora']), criticalAreaController.delete)
 //search by id
-    criticalAreaRouter.get("/area-critica/:id", criticalAreaController.searchAreaById)
+    criticalAreaRouter.get("/area-critica/:id", authenticatedMiddleware, criticalAreaController.searchAreaById)
 //search by critical level
-    criticalAreaRouter.get("/area-critica/nivel/:criticidade", criticalAreaController.searchByCriticalLevel)
+    criticalAreaRouter.get("/area-critica/nivel/:criticidade", authenticatedMiddleware, criticalAreaController.searchByCriticalLevel)
 //search by status
-    criticalAreaRouter.get("/area-critica/status/:status", criticalAreaController.searchByStatus)
+    criticalAreaRouter.get("/area-critica/status/:status", authenticatedMiddleware, criticalAreaController.searchByStatus)
 //search by coordenaties
-    criticalAreaRouter.get("/area-critica/coordenadas/:coordenadas", criticalAreaController.searchByCoordenaties)
+    criticalAreaRouter.get("/area-critica/coordenadas/:coordenadas", authenticatedMiddleware, criticalAreaController.searchByCoordenaties)
 //search by locality
-    criticalAreaRouter.get("/area-critica/bairro/:localidade", criticalAreaController.searchByLocality)
+    criticalAreaRouter.get("/area-critica/bairro/:localidade", authenticatedMiddleware, criticalAreaController.searchByLocality)
 
 export { criticalAreaRouter }

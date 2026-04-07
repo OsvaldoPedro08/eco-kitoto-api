@@ -9,7 +9,7 @@ export interface UserResponseDTO {
     telephone : string,
     typeUser : TypeUser,
     districtId : string,
-    createdAt : string | Date
+    createdAt : Date
 }
 
 export interface CreateUserDTO {
@@ -20,4 +20,9 @@ export interface CreateUserDTO {
     telephone : string,
     typeUser : TypeUser,
     districtId : string
+}
+
+export interface AuthUserDTO {
+    email : string,
+    password : string
 }

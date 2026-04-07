@@ -40,10 +40,13 @@ export class ClearEventController {
 
         const idEvent = crypto.randomUUID()
         const current_volunteer = 0
-        const { title, areaId, responsibleId, eventDate, eventTime, descrition, max_volunteer,
-            meeting_point, estatus } = request.body
 
-        if(!title || !areaId || !responsibleId || !eventDate || !eventTime
+        const { title, areaId, eventDate, eventTime, descrition, max_volunteer,
+            meeting_point, estatus } = request.body
+        
+        const responsibleId = request.user.id //id gerado através do token 
+        
+        if(!title || !areaId || !eventDate || !eventTime
             || !descrition || !meeting_point) {
 
             return response.json({ message : "Campos inválidos!"})
@@ -79,15 +82,17 @@ export class ClearEventController {
     async update(request : Request, response : Response) {
 
         const idEvent = String(request.params.id)
-        const { title, areaId, responsibleId, eventDate, eventTime, descrition,
+        const { title, areaId, eventDate, eventTime, descrition,
             max_volunteer, meeting_point, estatus } = request.body
+
+        const responsibleId = request.user.id
 
         if(!idEvent) {
 
             return response.json({ message : "Evento de Limpeza não encontrado!"})
         }
 
-        if(!title || !areaId || !responsibleId || !eventDate || !eventTime || !descrition
+        if(!title || !areaId || !eventDate || !eventTime || !descrition
             || !meeting_point
         ) {
             return response.json({ message : "Campos inválidos!"})

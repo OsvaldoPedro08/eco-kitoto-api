@@ -48,12 +48,12 @@ export class CriticalAreaController {
 
         try {
                 const area = await createCriticalArea.execute({
-                    idcriticalArea,
-                    districtId,
-                    descrition,
-                    coordenaties,
-                    critical_level,
-                    image,
+                    idcriticalArea : idcriticalArea,
+                    districtId : districtId,
+                    descrition : descrition,
+                    coordenaties : coordenaties,
+                    critical_level : critical_level,
+                    image : image,
                     estatus
                 })
                 console.log(area)

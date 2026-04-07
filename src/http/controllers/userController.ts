@@ -6,6 +6,7 @@ import { UpdateUser } from "../../app/usecase/user/updateUser";
 import { DeleteUser } from "../../app/usecase/user/deleteUser";
 import { SearchByEmail } from "../../app/usecase/user/searchByEmail";
 import { SearchByName } from "../../app/usecase/user/searchByName";
+import { BCryptHashProviderServices } from "../../infra/services/BCryptHashProviderServices";
 
 export class UserController {
     constructor() {}
@@ -38,7 +39,8 @@ export class UserController {
         }
 
         const drizzleUserRepository = new DrizzleUserRepository()
-        const createUser = new CreateUser(drizzleUserRepository)
+        const hashProvider = new BCryptHashProviderServices()
+        const createUser = new CreateUser(hashProvider, drizzleUserRepository)
 
         try {
             
@@ -63,10 +65,13 @@ export class UserController {
 //update
     async update(request : Request, response : Response) {
 
-        const iduser = String(request.params.id)
+        //const iduser = String(request.params.id)
+        
+        const iduser = request.user.id
+
         const { name, telephone, districtId } = request.body
 
-        if(!iduser || !name || !districtId) {
+        if(!name || !districtId) {
             
             return response.json({ message : "Dados inválidos!"})
         }
@@ -126,7 +131,7 @@ export class UserController {
 //search user by name
     async searchByName(request : Request, response : Response) {
 
-        const name = String(request.params.email)
+        const name = String(request.params.name)
 
         const drizzleUserRepository = new DrizzleUserRepository()
         const searchByName = new SearchByName(drizzleUserRepository)

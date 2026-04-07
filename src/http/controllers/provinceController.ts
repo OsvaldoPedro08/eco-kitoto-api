@@ -47,8 +47,8 @@ export class ProvinceController {
         try {
 
             const province = await createProvince.execute({
-                idprovince,
-                name
+                idprovince : idprovince,
+                name : name
             })
 
             return response.json(province)

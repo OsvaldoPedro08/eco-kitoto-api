@@ -18,7 +18,25 @@ export class VolunteerParticipationController {
 
     constructor() {}
 
-//list all
+/**
+ * @openapi 
+ *   /eco-kitoto/voluntarios:
+ *    get:
+ *      summary: Lista todos os voluntários
+ *      tags: [VOLUNTÁRIOS]
+ *      responses:
+ *       200:
+ *       description: Lista recuperada com sucesso
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: array
+ *           items:
+ *            type: object
+ *           500:
+ *             description:
+ *               Erro interno no servidor
+ */
     async listAll(request : Request, response : Response) {
 
         const drizzleVolunteerParticipationRepository = new DrizzleVolunteerParticipationRepository()
@@ -39,9 +57,11 @@ export class VolunteerParticipationController {
     async create(request : Request, response : Response) {
 
         const idparticipation = crypto.randomUUID()
-        const { eventId, volunteerId, pontuation, estatus } = request.body
+        const { eventId, pontuation, estatus } = request.body
 
-        if(!eventId || !volunteerId) {
+        const volunteerId = request.user.id
+
+        if(!eventId) {
 
             return response.json({ message : "Pedido de participação inválido!"})
         }
@@ -99,8 +119,6 @@ export class VolunteerParticipationController {
 
         const idparticipation = String(request.params.id)
         let { pontuation}  = request.body
-
-        console.log("Pontuação: "+pontuation)
 
         if(!idparticipation) {
             return response.json({ message : "Evento não encontrado!"})

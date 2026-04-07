@@ -1,5 +1,6 @@
 import express from "express"
 import { systemRouter } from "../http/routes"
+import { setupSwagger } from "../infra/config/swagger"
 
 export const app = express()
 
@@ -8,3 +9,6 @@ export const app = express()
 
 // systema de rotas
     app.use(systemRouter)
+
+//ativa o swagger
+    setupSwagger(app)

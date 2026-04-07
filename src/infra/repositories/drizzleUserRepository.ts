@@ -40,7 +40,7 @@ export class DrizzleUserRepository implements UserRepository {
             municipality : p.municipality ?? "",
             districtId : p.districtId ?? "",
             district : p.district ?? "",
-            createdAt : p.createdAt ?? ""
+            createdAt : p.createdAt!
         }))
     }
 
@@ -126,9 +126,10 @@ export class DrizzleUserRepository implements UserRepository {
             municipality : p.municipality ?? "",
             districtId : p.districtId ?? "",
             district : p.district ?? "",
-            createdAt : p.createdAt ?? ""
+            createdAt : p.createdAt!
         }))
     }
+
 //search by email
     async searchByEmail(email: string): Promise<UserResponseDTO[] | null> {
         
@@ -160,7 +161,7 @@ export class DrizzleUserRepository implements UserRepository {
             municipality : p.municipality ?? "",
             districtId : p.districtId ?? "",
             district : p.district ?? "",
-            createdAt : p.createdAt ?? ""
+            createdAt : p.createdAt!
         }))
     }
 
@@ -195,7 +196,36 @@ export class DrizzleUserRepository implements UserRepository {
             municipality : p.municipality ?? "",
             districtId : p.districtId ?? "",
             district : p.district ?? "",
-            createdAt : p.createdAt ?? ""
+            createdAt : p.createdAt!
+        }))
+    }
+
+//find by email
+    async findByEmail(email: string): Promise<User[] | null> {
+        
+        const users = await db.select({
+            iduser : userTable.iduser,
+            name : userTable.name,
+            email : userTable.email,
+            password : userTable.password,
+            telephone : userTable.telephone,
+            typeUser : userTable.typeUser,
+            districtId : userTable.districtId
+        })
+        .from(userTable)
+        .innerJoin(districtTable, eq(userTable.districtId, districtTable.id_district))
+        .innerJoin(municipalityTable, eq(districtTable.municipalityId, municipalityTable.idmunicipality))
+        .innerJoin(provinceTable, eq(municipalityTable.provinceId, provinceTable.idprovince))
+        .where(eq(userTable.email, email))
+
+        return users.map(p => ({
+            iduser : p.iduser ?? "",
+            name : p.name ?? "",
+            email : p.email ?? "",
+            password : p.password ?? "",
+            telephone : p.telephone ?? "",
+            typeUser : p.typeUser as any,
+            districtId : p.districtId ?? ""
         }))
     }
 }

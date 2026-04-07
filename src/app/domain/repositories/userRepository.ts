@@ -9,4 +9,5 @@ export interface UserRepository {
     searchById(iduser : string) : Promise<UserResponseDTO[] | null>
     searchByEmail(email : string) : Promise<UserResponseDTO[] | null>
     searchByName(name : string) : Promise<UserResponseDTO[] | null>
+    findByEmail(email : string) : Promise<User[] | null>
 }
