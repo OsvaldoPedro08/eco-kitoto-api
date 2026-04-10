@@ -10,6 +10,8 @@ import { levelEnum, statusEnum } from "../interfaces/criticalAreaDTO";
 import { SearchByStatus } from "../../app/usecase/criticalArea/searchByStatus";
 import { SearchByCoordenaties } from "../../app/usecase/criticalArea/searchByCoordenaties";
 import { SearchByLocality } from "../../app/usecase/criticalArea/searchByLocality";
+import sharp from "sharp"
+import CloudinaryServices from "../../infra/services/storage/cloudinary/CloudinaryServices";
 
 export class CriticalAreaController {
 
@@ -35,10 +37,10 @@ export class CriticalAreaController {
 //create
     async create(request : Request, response : Response) {
 
-        const { districtId, descrition, coordenaties, critical_level, image, estatus } = request.body
+        const { districtId, descrition, coordenaties, critical_level, estatus } = request.body
         const idcriticalArea = crypto.randomUUID()
         
-        if(!districtId || !descrition || !coordenaties || !critical_level || !image) {
+        if(!districtId || !descrition || !coordenaties || !critical_level) {
 
             return response.json({ error : "Dados inválidos! Por favor, preencha todos os dados disponíveis."})
         }
@@ -47,15 +49,47 @@ export class CriticalAreaController {
         const createCriticalArea = new CreateArea(drizzleCriticalAreaRepository)
 
         try {
+                let imageURL : string | undefined //get the url image
+
+                //verify if image exist
+                if(request.file) {
+
+                    //converter image em jpg e otimizar
+                    const buffer = await sharp(request.file.buffer).jpeg({ quality : 80 }).toBuffer()
+
+                    //1024 * 1024 * 2 equivale ha 2MB
+                    if(buffer.length > 1024 * 1024 * 2) {
+
+                        return ({
+                            request,
+                            description : "Limite excedido!",
+                            action_eng: "The image must have at most 2MB",
+                            action_pt: "A imagem precisa ter no máximo 2MB",
+                            message_eng: "Exceeded Image Size",
+                            message_pt: "Tamanho da imagem excedido",
+                        });
+                    }
+
+                    const fileName = `area-${crypto.randomUUID()}`
+
+                    //upload para cloudinary
+                    imageURL = (await CloudinaryServices.upload(
+                        buffer,
+                        fileName,
+                        "services"
+                    )) as string
+                }
+
                 const area = await createCriticalArea.execute({
                     idcriticalArea : idcriticalArea,
                     districtId : districtId,
                     descrition : descrition,
                     coordenaties : coordenaties,
                     critical_level : critical_level,
-                    image : image,
+                    image : imageURL!,
                     estatus
                 })
+
                 console.log(area)
                 return response.json(area)
 

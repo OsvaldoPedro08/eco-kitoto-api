@@ -1,12 +1,12 @@
 import { CreateUserDTO } from "../../../http/interfaces/userDTO";
 import { User } from "../../domain/entities/user";
-import { IHashProvider } from "../../domain/repositories/hashProviderRepository";
+import { HashProviderRepository } from "../../domain/repositories/hashProviderRepository";
 import { UserRepository } from "../../domain/repositories/userRepository";
 
 export class CreateUser {
 
     constructor(
-        private hashProvider : IHashProvider,
+        private hashProvider : HashProviderRepository,
         private userRepository : UserRepository
     ) {}
 

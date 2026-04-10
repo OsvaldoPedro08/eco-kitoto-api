@@ -2,6 +2,7 @@ import { Router } from "express";
 import { CriticalAreaController } from "../controllers/criticalAreaController";
 import { authenticatedMiddleware } from "../middlewares/authenticatedMiddleware";
 import { checkRoleMiddleware } from "../middlewares/checkRoleMiddleware";
+import { upload } from "../../utils/multer";
 
 const criticalAreaRouter = Router()
 const criticalAreaController = new CriticalAreaController()
@@ -9,7 +10,7 @@ const criticalAreaController = new CriticalAreaController()
 //list all
     criticalAreaRouter.get("/area-critica", authenticatedMiddleware, criticalAreaController.listAll)
 //create
-    criticalAreaRouter.post("/area-critica/nova", authenticatedMiddleware, criticalAreaController.create)
+    criticalAreaRouter.post("/area-critica/nova", authenticatedMiddleware, upload.single("image"), criticalAreaController.create)
 //update
     criticalAreaRouter.patch("/area-critica/editar/:id", authenticatedMiddleware, criticalAreaController.update)
 //delete
