@@ -18,25 +18,7 @@ export class VolunteerParticipationController {
 
     constructor() {}
 
-/**
- * @openapi 
- *   /eco-kitoto/voluntarios:
- *    get:
- *      summary: Lista todos os voluntários
- *      tags: [VOLUNTÁRIOS]
- *      responses:
- *       200:
- *       description: Lista recuperada com sucesso
- *       content:
- *         application/json:
- *           schema:
- *             type: array
- *           items:
- *            type: object
- *           500:
- *             description:
- *               Erro interno no servidor
- */
+//list all
     async listAll(request : Request, response : Response) {
 
         const drizzleVolunteerParticipationRepository = new DrizzleVolunteerParticipationRepository()

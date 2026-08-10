@@ -23,14 +23,31 @@ const options : swaggerJSDoc.Options = {
         ],
         components : {
             securitySchemes : {
-                bearerAuth : {
+                //nome do esquema de segurança por Bearer Token
+                /*bearerAuth : {
                     type : 'http',
                     scheme : 'bearer',
                     bearerFormat : 'JWT',
+                },*/
+
+                //nome do esquema de segurança por Cookies
+                cookieAuth: {
+                    type: 'apiKey',
+                    in: 'cookie',
+                    name: 'ecokitoto_token',
+                    description: 'Cookie de autenticação retornado após login.'
                 },
             },
         },
+
+        //aplicado a segurança globalmente porque maior parte das rotas usam o cookie
+        security: [
+            {
+                cookieAuth: [],
+            },
+        ],
     },
+
     //lê os comentarios em todos os arquivos .ts dentro de src
     apis : ['./src/http/routes/*.ts', './src/http/controllers/*.ts'],
 };

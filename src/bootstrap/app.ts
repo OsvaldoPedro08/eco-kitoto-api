@@ -10,14 +10,15 @@ const isDevelopment = process.env.NODE_ENV === 'development' || !process.env.NOD
 
 //middleware
     app.use(cors({
-        origin : isDevelopment 
+        origin : true //isDevelopment 
         ? true //em dev, aceita qualquer origem(inclusive localhost)
         :
         [
             //URLs reais dos frontends
         ],
         credentials : true, //permite que os cookies entrem e saiam da API
-
+        methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
     })) //permite que qualquer origem acessa a API de forma local
 
     app.use(express.json())

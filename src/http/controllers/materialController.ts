@@ -9,25 +9,7 @@ import { FindMaterialByEventId } from "../../app/usecase/material/findMaterialBy
 export class MaterialController {
     constructor() {}
 
-/**
- * @openapi 
- *   /eco-kitoto/materiais:
- *    get:
- *      summary: Lista todos os materiais de limpeza
- *      tags: [MATERIAIS DE LIMPEZA]
- *      responses:
- *       200:
- *       description: Lista recuperada com sucesso
- *       content:
- *         application/json:
- *           schema:
- *             type: array
- *           items:
- *            type: object
- *           500:
- *             description:
- *               Erro interno no servidor
- */
+//list all
     async listAll(request : Request, response : Response) {
 
         const drizzleMaterialRepository = new DrizzleMaterialRepository()
@@ -43,35 +25,7 @@ export class MaterialController {
         }
     }
 
-  /**
- * @openapi
- * /eco-kitoto/materiais/novo:
- *   post:
- *     summary: Cadastra um novo material de limpeza
- *     tags: [MATERIAIS DE LIMPEZA]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *            type: object
- *            properties:
- *              name:
- *                type: string
- *                description: Nome do material de limpeza
- *              eventId:
- *                type: string
- *                description: ID do evento ao qual o material pertence
- *     responses:
- *       201:
- *         description: Material cadastrado com sucesso!
- *       400:
- *         description: Dados inválidos (campos obrigatórios ausentes)
- *       500:
- *         description: Erro interno ao cadastrar material
- */
-
-
+//create
     async create(request : Request, response : Response) {
 
         const { eventId, name } = request.body
@@ -96,40 +50,7 @@ export class MaterialController {
         }
     }
     
-/**
- * @openapi
- * /eco-kitoto/materiais/editar/{id}:
- *    patch:
- *     summary: Atualiza um material de limpeza existente
- *     tags: [MATERIAIS DE LIMPEZA]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: ID do material que será atualizado
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *            type: object
- *            properties:
- *              name:
- *                type: string
- *                description: Novo nome para o material
- *     responses:
- *       200:
- *         description: Material atualizado com sucesso!
- *       400:
- *         description: Erro na validação dos dados
- *       404:
- *         description: Material não encontrado
- *       500:
- *         description: Erro interno ao atualizar material
- */
-
+//update
     async update(request : Request, response : Response) {
 
         const idmaterial = String(request.params.id)
@@ -156,24 +77,6 @@ export class MaterialController {
         }
     }
 
- /**
- * @openapi
- * /eco-kitoto/materiais/{id}:
- *   delete:
- *     summary: Remove um material de limpeza pelo ID
- *     tags: [MATERIAIS DE LIMPEZA]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *     responses:
- *       200:
- *         description: Material eliminado com sucesso
- *       404:
- *         description: Material não encontrado
- */
     async delete(request : Request, response : Response) {
 
         const idmaterial = String(request.params.id)
@@ -195,24 +98,7 @@ export class MaterialController {
         }
     }
 
- /**
- * @openapi
- * /eco-kitoto/materiais/evento/{eventId}:
- *   get:
- *     summary: Pesquisa materiais de limpeza pelo ID do evento
- *     tags: [MATERIAIS DE LIMPEZA]
- *     parameters:
- *       - in: path
- *         name: eventId
- *         required: true
- *         schema:
- *           type: string
- *     responses:
- *       200:
- *         description: Lista de materiais do evento
- *       404:
- *         description: Material não encontrado
- */
+//find by event id
     async findMaterialByEventId(request : Request, response : Response) {
 
         const eventId = String(request.params.eventId)
