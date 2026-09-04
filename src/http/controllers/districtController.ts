@@ -76,9 +76,9 @@ export class DistrictController {
 //delete
     async delete(request : Request, response : Response) {
 
-        const id_district = String(request.params.id)
+        const id = String(request.params.id)
 
-        if(!id_district) {
+        if(!id) {
             return response.json({ message : "Município não encontrado!"})
         }
 
@@ -86,7 +86,7 @@ export class DistrictController {
         const deleteDistrict = new DeleteDistrict(drizzleDistrictRepository)
 
         try {
-                await deleteDistrict.execute(id_district)
+                await deleteDistrict.execute(id)
 
                 return response.json({ message : "Distrito eliminado com sucesso!"})
 
