@@ -286,24 +286,24 @@ export class CriticalAreaController {
 //search by status
     async searchByStatus(request : Request, response : Response) {
 
-        const estatus = String(request.params.status) as statusEnum
+        const status = String(request.params.status) as statusEnum
 
-        if(!estatus) {
+        if(!status) {
 
-            return response.json({ error : "Área Crítica não encontrada!"})
+            return response.status(404).json({ error : "Área Crítica não encontrada!"})
         }
 
         const drizzleCriticalAreaRepository = new DrizzleCriticalAreaRepository()
         const searchByStatus = new SearchByStatus(drizzleCriticalAreaRepository)
 
         try {
-                const criticalArea = await searchByStatus.execute(estatus)
+                const criticalArea = await searchByStatus.execute(status)
 
-                return response.json(criticalArea)
+                return response.status(200).json(criticalArea)
 
         } catch (error) {
 
-            return response.json({ error : "Erro ao pesqusiar Área Crítica pelo Status!"})
+            return response.status(500).json({ error : "Erro ao pesqusiar Área Crítica pelo Status!"})
         }
     }
 
@@ -314,7 +314,7 @@ export class CriticalAreaController {
 
         if(!coordenaties) {
 
-            return response.json({ error : "Área Crítica não encontrada!"})
+            return response.status(404).json({ error : "Área Crítica não encontrada!"})
         }
 
         const drizzleCriticalAreaRepository = new DrizzleCriticalAreaRepository()
@@ -323,11 +323,11 @@ export class CriticalAreaController {
         try {
                 const area = await searchByCoordenaties.execute(coordenaties)
 
-                return response.json(area)
+                return response.status(200).json(area)
 
         } catch (error) {
             
-            return response.json({ error : "Erro ao pesquisar Área Crítica pelas Coordenadas!"})
+            return response.status(500).json({ error : "Erro ao pesquisar Área Crítica pelas Coordenadas!"})
         }
     }
 
@@ -338,7 +338,7 @@ export class CriticalAreaController {
 
         if(!locality) {
 
-            return response.json({ error : "Área Crítica não encontrada!"})
+            return response.status(404).json({ error : "Área Crítica não encontrada!"})
         }
 
         const drizzleCriticalAreaRepository = new DrizzleCriticalAreaRepository()
@@ -347,11 +347,11 @@ export class CriticalAreaController {
         try {
                 const area = await searchByLocality.execute(locality)
 
-                return response.json(area)
+                return response.status(200).json(area)
                 
         } catch (error) {
             
-            return response.json({ error : "Erro ao pesquisar Área Crítica pela localidade!"})
+            return response.status(500).json({ error : "Erro ao pesquisar Área Crítica pela localidade!"})
         }
     }
 }

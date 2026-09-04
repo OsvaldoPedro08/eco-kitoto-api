@@ -122,6 +122,8 @@ export class DrizzleCriticalAreaRepository implements CriticalAreaRepository {
             critical_level : criticalAreaTable.critical_level,
             estatus : criticalAreaTable.estatus,
             image_1 : criticalAreaTable.image_1,
+            image_2 : criticalAreaTable.image_2,
+            image_3 : criticalAreaTable.image_3,
             descrition : criticalAreaTable.descrition,
             createdAt : criticalAreaTable.createdAt
        })
@@ -142,6 +144,8 @@ export class DrizzleCriticalAreaRepository implements CriticalAreaRepository {
             critical_level : p.critical_level as any,
             estatus : p.estatus as any,
             image_1 : p.image_1 ?? "",
+            image_2 : p.image_2 ?? "",
+            image_3 : p.image_3 ?? "",
             descrition : p.descrition ?? "",
             createdAt : p.createdAt!
        }))
@@ -160,6 +164,8 @@ export class DrizzleCriticalAreaRepository implements CriticalAreaRepository {
             critical_level : criticalAreaTable.critical_level,
             estatus : criticalAreaTable.estatus,
             image_1 : criticalAreaTable.image_1,
+            image_2 : criticalAreaTable.image_2,
+            image_3 : criticalAreaTable.image_3,
             descrition : criticalAreaTable.descrition,
             createdAt : criticalAreaTable.createdAt
        })
@@ -180,6 +186,8 @@ export class DrizzleCriticalAreaRepository implements CriticalAreaRepository {
             critical_level : p.critical_level as any,
             estatus : p.estatus as any,
             image_1 : p.image_1 ?? "",
+            image_2 : p.image_2 ?? "",
+            image_3 : p.image_3 ?? "",
             descrition : p.descrition ?? "",
             createdAt : p.createdAt!
        }))
@@ -198,6 +206,8 @@ export class DrizzleCriticalAreaRepository implements CriticalAreaRepository {
             critical_level : criticalAreaTable.critical_level,
             estatus : criticalAreaTable.estatus,
             image_1 : criticalAreaTable.image_1,
+            image_2 : criticalAreaTable.image_2,
+            image_3 : criticalAreaTable.image_3,
             descrition : criticalAreaTable.descrition,
             createdAt : criticalAreaTable.createdAt
        })
@@ -218,6 +228,8 @@ export class DrizzleCriticalAreaRepository implements CriticalAreaRepository {
             critical_level : p.critical_level as any,
             estatus : p.estatus as any,
             image_1 : p.image_1 ?? "",
+            image_2 : p.image_2 ?? "",
+            image_3 : p.image_3 ?? "",
             descrition : p.descrition ?? "",
             createdAt : p.createdAt!
        }))
@@ -236,6 +248,8 @@ export class DrizzleCriticalAreaRepository implements CriticalAreaRepository {
             critical_level : criticalAreaTable.critical_level,
             estatus : criticalAreaTable.estatus,
             image_1 : criticalAreaTable.image_1,
+            image_2 : criticalAreaTable.image_2,
+            image_3 : criticalAreaTable.image_3,
             descrition : criticalAreaTable.descrition,
             createdAt : criticalAreaTable.createdAt
        })
@@ -256,6 +270,8 @@ export class DrizzleCriticalAreaRepository implements CriticalAreaRepository {
             critical_level : p.critical_level as any,
             estatus : p.estatus as any,
             image_1 : p.image_1 ?? "",
+            image_2 : p.image_2 ?? "",
+            image_3 : p.image_3 ?? "",
             descrition : p.descrition ?? "",
             createdAt : p.createdAt!
        }))
@@ -274,6 +290,8 @@ export class DrizzleCriticalAreaRepository implements CriticalAreaRepository {
             critical_level : criticalAreaTable.critical_level,
             estatus : criticalAreaTable.estatus,
             image_1 : criticalAreaTable.image_1,
+            image_2 : criticalAreaTable.image_2,
+            image_3 : criticalAreaTable.image_3,
             descrition : criticalAreaTable.descrition,
             createdAt : criticalAreaTable.createdAt
        })
@@ -294,6 +312,8 @@ export class DrizzleCriticalAreaRepository implements CriticalAreaRepository {
             critical_level : p.critical_level as any,
             estatus : p.estatus as any,
             image_1 : p.image_1 ?? "",
+            image_2 : p.image_2 ?? "",
+            image_3 : p.image_3 ?? "",
             descrition : p.descrition ?? "",
             createdAt : p.createdAt!
        }))
