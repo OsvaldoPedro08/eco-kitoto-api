@@ -29,11 +29,11 @@ export class ClearEventController {
         try {
                 const event = await listAllEvent.execute()
 
-                return response.json(event)
+                return response.status(200).json(event)
 
         } catch (error) {
             
-            return response.json({ error : "Erro ao listar Eventos de Limpeza!"})
+            return response.status(500).json({ error : "Erro ao listar Eventos de Limpeza!"})
         }
     }
 
