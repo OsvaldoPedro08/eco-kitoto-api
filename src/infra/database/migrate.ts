@@ -6,9 +6,9 @@ import { Client } from "pg"
 
 const client = new Client({
     connectionString: process.env.DATABASE_URL,
-    ssl : {
+    /*ssl : {
         rejectUnauthorized : false, // permite certificados do supabase/Pooler
-    }
+    }*/
 })
 
 const main = async () => {
