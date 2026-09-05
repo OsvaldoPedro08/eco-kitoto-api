@@ -27,10 +27,10 @@ const relatoryController = new RelatoryController
  *                 properties:
  *                   idrelatory:
  *                     type: string
- *                     example: "rel-12345"
+ *                     example: "9b1deb4d-3b7d-41b9-9189-e82200c45601"
  *                   eventId:
  *                     type: string
- *                     example: "evt-67890"
+ *                     example: "9b1deb4d-3b7d-41b9-9189-e82200c06583"
  *                   before_image:
  *                     type: string
  *                     example: "https://res.cloudinary.com/demo/image/upload/v1234/before.jpg"
@@ -74,7 +74,7 @@ const relatoryController = new RelatoryController
  *             properties:
  *               eventId:
  *                 type: string
- *                 example: "evt-67890"
+ *                 example: "9b1deb4d-3b7d-41b9-9189-e82200c06583"
  *               before_image:
  *                 type: string
  *                 example: "https://res.cloudinary.com/demo/image/upload/v1234/before.jpg"
@@ -95,10 +95,10 @@ const relatoryController = new RelatoryController
  *                   properties:
  *                     idrelatory:
  *                       type: string
- *                       example: "rel-12345"
+ *                       example: "9b1deb4d-3b7d-41b9-9189-e82200c45601"
  *                     eventId:
  *                       type: string
- *                       example: "evt-67890"
+ *                       example: "9b1deb4d-3b7d-41b9-9189-e82200c06583"
  *                     before_image:
  *                       type: string
  *                       example: "https://res.cloudinary.com/demo/image/upload/v1234/before.jpg"
@@ -145,10 +145,10 @@ const relatoryController = new RelatoryController
  *             properties:
  *               id:
  *                 type: string
- *                 example: "rel-12345"
+ *                 example: "9b1deb4d-3b7d-41b9-9189-e82200c45601"
  *               eventId:
  *                 type: string
- *                 example: "evt-67890"
+ *                 example: "9b1deb4d-3b7d-41b9-9189-e82200c06583"
  *               before_image:
  *                 type: string
  *                 example: "https://res.cloudinary.com/demo/image/upload/v1234/before.jpg"
@@ -169,10 +169,10 @@ const relatoryController = new RelatoryController
  *                   properties:
  *                     idrelatory:
  *                       type: string
- *                       example: "rel-12345"
+ *                       example: "9b1deb4d-3b7d-41b9-9189-e82200c45601"
  *                     eventId:
  *                       type: string
- *                       example: "evt-67890"
+ *                       example: "9b1deb4d-3b7d-41b9-9189-e82200c06583"
  *                     before_image:
  *                       type: string
  *                       example: "https://res.cloudinary.com/demo/image/upload/v1234/before.jpg"
@@ -217,7 +217,7 @@ const relatoryController = new RelatoryController
  *         description: ID do relatório a eliminar
  *         schema:
  *           type: string
- *         example: "rel-12345"
+ *         example: "9b1deb4d-3b7d-41b9-9189-e82200c45601"
  *     responses:
  *       200:
  *         description: Resposta com o estado da eliminação do relatório.
@@ -260,7 +260,7 @@ const relatoryController = new RelatoryController
  *         description: ID do relatório a pesquisar
  *         schema:
  *           type: string
- *         example: "rel-12345"
+ *         example: "9b1deb4d-3b7d-41b9-9189-e82200c45601"
  *     responses:
  *       200:
  *         description: Relatório encontrado ou mensagem de erro.
@@ -272,10 +272,10 @@ const relatoryController = new RelatoryController
  *                   properties:
  *                     idrelatory:
  *                       type: string
- *                       example: "rel-12345"
+ *                       example: "9b1deb4d-3b7d-41b9-9189-e82200c45601"
  *                     eventId:
  *                       type: string
- *                       example: "evt-67890"
+ *                       example: "9b1deb4d-3b7d-41b9-9189-e82200c06583"
  *                     before_image:
  *                       type: string
  *                       example: "https://res.cloudinary.com/demo/image/upload/v1234/before.jpg"
@@ -315,7 +315,7 @@ const relatoryController = new RelatoryController
  *         description: ID do evento associado
  *         schema:
  *           type: string
- *         example: "evt-67890"
+ *         example: "9b1deb4d-3b7d-41b9-9189-e82200c06583"
  *     responses:
  *       200:
  *         description: Relatórios encontrados ou mensagem de erro.
@@ -329,10 +329,10 @@ const relatoryController = new RelatoryController
  *                     properties:
  *                       idrelatory:
  *                         type: string
- *                         example: "rel-12345"
+ *                         example: "9b1deb4d-3b7d-41b9-9189-e82200c45601"
  *                       eventId:
  *                         type: string
- *                         example: "evt-67890"
+ *                         example: "9b1deb4d-3b7d-41b9-9189-e82200c06583"
  *                       before_image:
  *                         type: string
  *                         example: "https://res.cloudinary.com/demo/image/upload/v1234/before.jpg"
@@ -386,10 +386,10 @@ const relatoryController = new RelatoryController
  *                     properties:
  *                       idrelatory:
  *                         type: string
- *                         example: "rel-12345"
+ *                         example: "9b1deb4d-3b7d-41b9-9189-e82200c45601"
  *                       eventId:
  *                         type: string
- *                         example: "evt-67890"
+ *                         example: "9b1deb4d-3b7d-41b9-9189-e82200c06583"
  *                       before_image:
  *                         type: string
  *                         example: "https://res.cloudinary.com/demo/image/upload/v1234/before.jpg"
