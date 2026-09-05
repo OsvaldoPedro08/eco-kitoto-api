@@ -17,7 +17,11 @@ const options : swaggerJSDoc.Options = {
         },
         servers : [
             {
-                url : 'http://localhost:'+process.env.API_PORT,
+                url : "https://eco-kitoto-api.onrender.com",
+                description : "Servidor de produção",
+            },
+            {
+                url : 'http://localhost:'+process.env.PORT || 8080,
                 description : 'Servidor de desenvolvimento',
             },
         ],
