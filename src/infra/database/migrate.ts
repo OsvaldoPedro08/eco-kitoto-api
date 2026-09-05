@@ -5,7 +5,10 @@ import { migrate } from "drizzle-orm/node-postgres/migrator"
 import { Client } from "pg"
 
 const client = new Client({
-    connectionString: process.env.DATABASE_URL
+    connectionString: process.env.DATABASE_URL,
+    ssl : {
+        rejectUnauthorized : false, // permite certificados do supabase/Pooler
+    }
 })
 
 const main = async () => {
